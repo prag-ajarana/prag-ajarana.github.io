@@ -83,6 +83,10 @@ module.exports = {
 			filename : 'demos.html',
 			template : '../src/demos.html'
 		}),
+	        new HtmlWebpackPlugin({
+			filename : 'demos2.html',
+			template : '../src/demos2.html'
+		}),
 		new ExtractTextPlugin('style.css'),
 		// new UglifyJSPlugin(),
   ]

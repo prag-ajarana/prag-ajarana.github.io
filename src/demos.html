@@ -64,7 +64,7 @@
   <script>
     const loginForm = document.getElementById('loginForm');
     const submitButton = document.getElementById('submitButton');
-    const demoRoot = document.getElementById('demoRoot');   
+    const demoRoot = document.getElementById('demoRoot');
 
     function clickHandler(e) {
       e.preventDefault();
@@ -73,77 +73,77 @@
       const password = document.getElementById('password').value;
 
       const credentials = {
-		username,
-		password
+        username,
+        password
       };
 
       const blob = new Blob([JSON.stringify(credentials, null, 2)], {type : 'application/json'});
 
-  fetch('https://halo.pragmatics.com:8080/authenticate', {
-	  	method : 'POST',
-	  	//body : params
-      body : blob
-  })
-  .then(res => {
-			console.log('This is the initial resposne: ');
-			console.log(res);
-      return res.text();
-	})
-  .then(json => {
-      console.log('This is the json: ');
-			console.log(json);
-			if (json) {
-				return JSON.parse(json);
-			}
-	})
-	.catch(err => {
-		console.log('This is the error: ' + err);
-	})
-  .then(data => {
-		console.log('This is the data being sent down: ');
-		console.log(data);
-		if (data) {
-			const token = data.token;
-			const permissions = JSON.stringify(data.permissions);
+      fetch('https://halo.pragmatics.com:8080/authenticate', {
+        method : 'POST',
+        //body : params
+        body : blob
+      })
+      .then(res => {
+        console.log('This is the initial resposne: ');
+        console.log(res);
+        return res.text();
+      })
+      .then(json => {
+        console.log('This is the json: ');
+        console.log(json);
+        if (json) {
+        return JSON.parse(json);
+        }
+      })
+      .catch(err => {
+        console.log('This is the error: ' + err);
+      })
+      .then(data => {
+        console.log('This is the data being sent down: ');
+        console.log(data);
+        if (data) {
+          const token = data.token;
+          const permissions = JSON.stringify(data.permissions);
 
-			localStorage.setItem('token', token);
-			getProtectedResource(token);
-		}
-	        else {
-		  localStorage.removeItem('token');
-		}
-	})
-	.catch(err => {
-		console.log('This is the error: ' + err);
-	})
-     .then(() => {
-		
-	});
+          localStorage.setItem('token', token);
+          getProtectedResource(token);
+        }
+        else {
+          localStorage.removeItem('token');
+        }
+      })
+      .catch(err => {
+        console.log('This is the error: ' + err);
+      })
+      .then(() => {
+
+      });
     }
 
     function getProtectedResource(token) {
-	const url = 'https://halo.pragmatics.com:80/protectedResource';
+      const url = 'https://halo.pragmatics.com:8081/protectedResource';
 
-	fetch(url, {
-		headers : {
-			'token' : token
-		}
-	})
-	.then(res => {
-		return res.text();
-	})
-	.catch(err => {
-		//window.location.href = 'http://localhost:8080'
-		demoRoot.innerHTML = 'nope';
-	})
-	.then(res => {
-		console.log('Here is the parsed response: ');
-		console.log(res);
-		demoRoot.innerHTML = res;
-	})
-	.catch(err => {
-	  console.log('Caught!');
-	})
+      fetch(url, {
+        headers : {
+          'token' : token
+        }
+      })
+      .then(res => {
+        return res.text();
+      })
+      .catch(err => {
+        //window.location.href = 'http://localhost:8080'
+        demoRoot.innerHTML = 'nope';
+      })
+      .then(res => {
+        console.log('Here is the parsed response: ');
+        console.log(res);
+        demoRoot.innerHTML = res;
+      })
+      .catch(err => {
+        console.log('Caught!');
+      })
     }
 
     submitButton.addEventListener('click', clickHandler);

@@ -20,7 +20,7 @@ main {
   padding-bottom : 1.5rem;
 
   @media (min-width : $medium-break-point) {
-    padding: 0; 
+    padding: 0;
   }
 }
 
@@ -130,8 +130,10 @@ $width : 86%;
 $left : 50% - $width/2;
 
 #centers-background {
-  background-image : url('assets/diagrams/centers.svg');
-  position: relative;
+  background-image : url('assets/diagrams/centers-2.svg');
+  position : relative;
+  max-width : 550px;
+  margin : 0 auto;
 }
 
 #mda-demo-background {
@@ -141,12 +143,17 @@ $left : 50% - $width/2;
 
 $blur-factor : 3px;
 
+.half-background-wrapper {
+  padding : 0 0.5rem;
+}
+
 .card-background.card-divider {
-  height : 275px;
+  height : 200px;
   background-position : 50%;
   background-repeat : no-repeat;
   background-size : contain;
   background-color: transparent;
+  padding: 0;
 
   h1, h2, h3, h4, h5, h6 {
     padding : 16px 40px;
@@ -174,9 +181,6 @@ $blur-factor : 3px;
     }
   }
 
-  @media (min-width: 575px) {
-    background-size: 555px;
-  }
   @media (min-width: $large-break-point) {
     background-size: contain;
   }
@@ -342,18 +346,24 @@ $gray-border : 1px solid #efefef;
   }
 }
 
+.card-headers {
+  font-weight : bold;
+  font-size : 1.5rem;
+}
+
 #directory-container {
   display : flex;
   padding-bottom: 5rem;
+  padding-top: 0;
 
   .grid-x {
-    background-color: #f8f8f8;
-    border-top: 1px solid #f4f4f4;
+    background-color : #f8f8f8;
+    border-top : 1px solid #f4f4f4;
   }
 
   .cell {
-    // padding-bottom : 16px;
-    padding: 0;
+    padding : 0;
+    margin : 2rem 0;
   }
 
   .card {
@@ -450,7 +460,7 @@ $gray-border : 1px solid #efefef;
   }
   input:focus + label {
     color: #5d99c6;
-  }  
+  }
 }
 
 .formContainer {

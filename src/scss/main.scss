@@ -16,12 +16,13 @@ $large-break-point : 1024px;
 
 main {
   min-height : calc(100vh - 146px);
-  padding-top : 1.5rem;
-  padding-bottom : 1.5rem;
-
-  @media (min-width : $medium-break-point) {
-    padding: 0;
-  }
+  // padding-top : 1.5rem;
+  // padding-bottom : 1.5rem;
+  //
+  // @media (min-width : $medium-break-point) {
+  //   padding: 0 0 3rem;
+  // }
+  padding : 0;
 }
 
 .bg-white {
@@ -71,7 +72,7 @@ main {
   max-width : 500px;
 
   @media (min-width : $large-break-point) {
-    margin: 0rem auto 4rem;
+    margin: 8rem auto;
     font-size : 22px;
     max-width : 525px;
   }
@@ -126,25 +127,32 @@ main {
   }
 }
 
-$width : 86%;
-$left : 50% - $width/2;
-
 #centers-background {
-  background-image : url('assets/diagrams/centers-2.svg');
+  background-image : url('assets/diagrams/centers-3.svg');
   position : relative;
-  max-width : 550px;
+  height: 100px;
   margin : 0 auto;
 }
 
 #mda-demo-background {
   background-image : url('assets/screenshots/mda/desktop-east-coast.png');
-  background-size : cover;
+  background-size : contain;
+  height : 325px;
+  background-position : 50% 0%;
+}
+
+.centered-card-section {
+  max-width : 400px;
 }
 
 $blur-factor : 3px;
 
 .half-background-wrapper {
-  padding : 0 0.5rem;
+  padding : 0 0.8rem;
+}
+
+.full-background-wrapper {
+  padding : 0;
 }
 
 .card-background.card-divider {
@@ -206,6 +214,18 @@ h1, h2, h3, h4, h5, h6 {
 #aboutPage {
   h2 {
     margin : 2.5rem 0;
+  }
+
+  .grid-container {
+    margin : 4rem auto;
+
+    @media (min-width : $medium-break-point) {
+      margin : 5rem auto;
+    }
+
+    @media (min-width : $large-break-point) {
+      margin : 6rem auto;
+    }
   }
 
   .tabs-content ul {
@@ -283,7 +303,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .tabs {
   border-radius : 3px;
-  margin : 25px 0;
+  margin : 0 0 2rem;
 
   display : flex;
   text-align : center;
@@ -351,47 +371,69 @@ $gray-border : 1px solid #efefef;
   font-size : 1.5rem;
 }
 
+$cell-margin-top-bottom : 3rem;
+
+$width : 90%;
+$left : 50% - $width/2;
+
 #directory-container {
-  display : flex;
-  padding-bottom: 5rem;
-  padding-top: 0;
+  padding : 0;
 
   .grid-x {
     background-color : #f8f8f8;
     border-top : 1px solid #f4f4f4;
   }
 
-  .cell {
-    padding : 0;
-    margin : 2rem 0;
+  #demoCell {
+    margin-bottom : 8rem;
   }
 
-  .card {
-    border: none;
-    background: none;
-    margin-bottom : 0;
-    overflow: visible;
+  .cell {
+    padding : 0;
+    margin : $cell-margin-top-bottom 0;
+    position : relative;
 
-    &:after {
-      content: '';
-      height: 1px;
-      background-color: #e9e9e9;
-      position: absolute;
-      width: $width;
-      left: $left;
-      bottom: 0;
+    &:first-child:after {
+      content : '';
+      height : 1px;
+      background-color : #e9e9e9;
+      position : absolute;
+      width : $width;
+      left : $left;
+      bottom : calc(0rem - #{$cell-margin-top-bottom});
+    }
+
+    @media (min-width : $large-break-point) {
+      margin : ($cell-margin-top-bottom + 1rem) 0;
+
+      &:first-child:after {
+        width : $width;
+        left : $left;
+        bottom : calc(0rem - #{$cell-margin-top-bottom + 1rem});
+      }
     }
   }
 
+  .card {
+    border : none;
+    background : none;
+    margin-bottom : 0;
+    overflow : visible;
+  }
+
   .card-section {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    padding: 2rem;
-    padding-bottom: 0;
+    display : flex;
+    justify-content : center;
+    position : relative;
+    padding : 0 1rem;
+    margin-bottom : $cell-margin-top-bottom;
 
     ul {
-      margin-bottom: 0;
+      margin-bottom : 0;
+    }
+
+    @media (min-width : $large-break-point) {
+      margin-bottom : $cell-margin-top-bottom + 1rem;
     }
   }
 
@@ -471,7 +513,7 @@ $gray-border : 1px solid #efefef;
 #submitButton {
   background-color: #ffca28;
   color: #333;
-  padding: 8px 24px;
+  padding: 10px 26px;
   border-radius: 4px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
 }

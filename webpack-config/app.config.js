@@ -71,7 +71,7 @@ module.exports = {
 		new CleanWebpackPlugin(['dist'], {
 			root : path.resolve(__dirname, '../'),
 		}),
-		new CopywebpackPlugin([ { from: '../src/assets', to: path.join(__dirname, '../dist/assets') } ]),
+		new CopywebpackPlugin([ { from: '../src/scss/assets', to: path.join(__dirname, '../dist/assets') } ]),
     new HtmlWebpackPlugin({
       template : '../src/index.html'
     }),

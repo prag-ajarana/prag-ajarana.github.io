@@ -8,6 +8,7 @@ import Header from './Header.js';
 import Home from './Home.js';
 import People from './People.js';
 import '../scss/main.scss';
+import { hot } from 'react-hot-loader';
 
 class Application extends React.Component {
   constructor(props) {
@@ -31,3 +32,5 @@ class Application extends React.Component {
 }
 
 ReactDOM.render(<Application />, document.getElementById('container'));
+
+export default hot(module)(Application)

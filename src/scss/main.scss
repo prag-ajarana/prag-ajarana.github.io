@@ -1,3 +1,4 @@
+@import 'breakpoints';
 @import 'colors';
 @import 'header';
 
@@ -11,15 +12,6 @@ html, body {
     height: 100%;
     width: 100%;
 }
-
-$black : #333;
-$white : #fff;
-$blue : hsl(198, 82%, 50%);
-$green : hsl(115, 45%, 50%);
-$orange : hsl(35, 100%, 50%);
-
-$medium-break-point : 640px;
-$large-break-point : 1024px;
 
 @media print, screen and (min-width: 40em) {
   .grid-margin-y>.cell {
@@ -42,6 +34,10 @@ main {
 .bg-black {
   background-color : #333;
 }
+
+// .bg-white {
+//   background-color : #fff
+// }
 
 #demosPage {
   display: flex;
@@ -99,41 +95,6 @@ main {
 .dropdown.menu {
   a {
     padding : 12px 1rem;
-  }
-}
-
-.menu {
-  a {
-    padding : 24px 1rem;
-    color : white;
-    font-size: 14px;
-
-    @media (min-width : $medium-break-point) {
-      padding : 18px 1rem;
-    }
-  }
-  li:last-child a {
-    padding-right: 2rem;
-  }
-
-  .selected {
-    position : relative;
-    font-weight : bold;
-  }
-
-  .selected:after {
-    content : '';
-    display : inline-block;
-    height : 2px;
-    width : 100%;
-    background-color : white;
-    position : absolute;
-    padding-left : inherit;
-    padding-right : inherit;
-    background-clip : content-box;
-    bottom : 10px;
-    left : 0;
-    right : 0;
   }
 }
 
@@ -318,8 +279,11 @@ h1, h2, h3, h4, h5, h6 {
   display : flex;
   text-align : center;
 
+  border: none;
+
   .tabs-title {
-    flex : 1
+    flex : 1;
+    border: 1px solid #e6e6e6;
   }
 }
 
@@ -340,11 +304,32 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.tabs-title > a {
-  color : #666;
-  background-color : #efefef;
-  transition : color 0.2s linear;
-  padding : 1.25rem 0;
+.tabs-title {
+  border-radius: 3px;
+
+  > a {
+    color : #888;
+    background-color : #efefef;
+    transition : color 0.2s linear;
+    padding : 1.25rem 0;
+    border-radius: 3px;
+
+    &:hover {
+      color: #333;
+    }
+  }
+
+  &:hover {
+    border: 1px solid #bfbfbf;
+  }
+}
+
+.tabs-title:last-child {
+  border-left: none;
+}
+
+.tabs-title:first-child {
+  border-right: none;
 }
 
 .tabs-title-active > a {
@@ -352,6 +337,28 @@ h1, h2, h3, h4, h5, h6 {
   background : white;
   font-weight: bold;
   color : #222;
+
+  &:focus {
+    background-color: white;
+    color: #222;
+  }
+}
+
+.tabs-title:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.tabs-title:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.tabs-title-active:first-child {
+  border: 1px solid #bfbfbf;
+}
+
+.tabs-title-active:last-child {
+  border: 1px solid #bfbfbf;
 }
 
 $gray-border : 1px solid #efefef;

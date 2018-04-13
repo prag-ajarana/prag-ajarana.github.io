@@ -1,4 +1,41 @@
 .nav-header {
-  // background: #2196f3;
-  background: red
+  background: #2196f3;
+}
+
+.menu {
+  $width : 70%;
+  $left : (100% - $width) / 2;
+
+  a {
+    padding : 24px 1rem;
+    color : white;
+    font-size: 14px;
+
+    @media (min-width : $medium-break-point) {
+      padding : 18px 1rem;
+    }
+  }
+  // li:last-child a {
+  //   padding-right: 2rem;
+  // }
+
+  .selected {
+    position : relative;
+    font-weight : bold;
+  }
+
+  .selected .menuLinkItem:after {
+    content : '';
+    display : inline-block;
+    height : 2px;
+    width : $width;
+    background-color : white;
+    position : absolute;
+    padding-left : inherit;
+    padding-right : inherit;
+    background-clip : content-box;
+    bottom : 6px;
+    left : $left;
+    right : 0;
+  }
 }

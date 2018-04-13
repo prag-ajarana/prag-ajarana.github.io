@@ -1,32 +1,47 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import classNames from 'classnames/bind';
+import pathToRegexp from 'path-to-regexp';
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const TopLeftBar = () => {
+  return (
+    <div className="top-bar-left">
+      <ul className="dropdown menu flex-center-small" data-dropdown-menu>
+        <li className="menuitem"><span id="branding"><NavLink to={`/`}>Technology Solutions Group</NavLink></span></li>
+      </ul>
+    </div>
+  )
+}
 
-  render() {
-    return (
-      <header className="bg-white nav-header">
-        <div className="grid-container top-bar">
-          <div className="top-bar-left">
-            <ul className="dropdown menu flex-center-small" data-dropdown-menu>
-              <li className="menuitem"><span id="branding"><Link to={`/`}>Technology Solutions Group</Link></span></li>
-            </ul>
-          </div>
-          <div className="top-bar-right">
-            <ul className="menu align-center">
-              <li><span className="selected"><Link to={`/`}>Home</Link></span></li>
-              <li><span><Link to={`/about/centers`}>About</Link></span></li>
-              <li><span><Link to={`/demos`}>Demos</Link></span></li>
-            </ul>
-          </div>
-        </div>
-      </header>
-    );
-  }
+const TopRightBar = () => {
+  // let currentPath = window.location.pathname;
+  //
+  // let deepSelectedAbout = classNames(
+  //   {
+  //     'selected' : currentPath == '/about/centers' || currentPath == '/about/people'
+  //   }
+  // );
+
+  return (
+    <div className="top-bar-right">
+      <ul className="menu align-center" onClick={this.clickHandler}>
+        <li><NavLink exact to={`/`} activeClassName="selected"><div className="menuLinkItem">Home</div></NavLink></li>
+        <li><NavLink to="/about" activeClassName="selected"><div className="menuLinkItem">About</div></NavLink></li>
+        <li><NavLink to={`/demos`} activeClassName="selected"><div className="menuLinkItem">Demos</div></NavLink></li>
+      </ul>
+    </div>
+  )
+}
+
+const Header = () => {
+  return (
+    <header className="bg-white nav-header">
+      <div className="grid-container top-bar">
+        <TopLeftBar />
+        <TopRightBar />
+      </div>
+    </header>
+  );
 }
 
 export default Header;

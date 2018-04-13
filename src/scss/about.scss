@@ -1,0 +1,38 @@
+#infoPanelWrapper {
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.info-panel {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 350px;
+  height: 350px;
+  background-color: orange;
+  color: #333;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s linear;
+}
+
+#centersPanel {
+  background: url('/assets/icons/solid/dot-circle.svg') 50% / 30px no-repeat;
+}
+
+#peoplePanel {
+  background: url('/assets/icons/solid/people.svg') 50% / 30px no-repeat;
+}
+
+.info-panel:hover {
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-panel:nth-child(2) {
+  margin: 0 20px;
+}

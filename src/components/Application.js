@@ -19,7 +19,7 @@ class Application extends React.Component {
   render() {
     return (
       <Router>
-        <div>
+        <div id="container">
           <Header />
 
           <Route exact path="/" component={Home} />
@@ -35,6 +35,6 @@ class Application extends React.Component {
   }
 }
 
-ReactDOM.render(<Application />, document.getElementById('container'));
+ReactDOM.render(<Application />, document.getElementById('root'));
 
 export default hot(module)(Application)

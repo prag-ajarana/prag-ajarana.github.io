@@ -1,7 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import classNames from 'classnames/bind';
-import pathToRegexp from 'path-to-regexp';
 
 const TopLeftBar = () => {
   return (
@@ -14,20 +12,12 @@ const TopLeftBar = () => {
 }
 
 const TopRightBar = () => {
-  // let currentPath = window.location.pathname;
-  //
-  // let deepSelectedAbout = classNames(
-  //   {
-  //     'selected' : currentPath == '/about/centers' || currentPath == '/about/people'
-  //   }
-  // );
-
   return (
     <div className="top-bar-right">
       <ul className="menu align-center" onClick={this.clickHandler}>
         <li><NavLink exact to={`/`} activeClassName="selected"><div className="menuLinkItem">Home</div></NavLink></li>
         <li><NavLink to="/about" activeClassName="selected"><div className="menuLinkItem">About</div></NavLink></li>
-        <li><NavLink to={`/demos`} activeClassName="selected"><div className="menuLinkItem">Demos</div></NavLink></li>
+        <li><NavLink to={`/demos`} activeClassName="selected"><div className="menuLinkItem">Live Demos</div></NavLink></li>
       </ul>
     </div>
   )

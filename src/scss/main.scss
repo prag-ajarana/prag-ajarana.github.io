@@ -1,6 +1,7 @@
 @import 'breakpoints';
 @import 'colors';
 @import 'header';
+@import 'about';
 
 html, body {
     height: 100%;
@@ -8,9 +9,11 @@ html, body {
     padding: 0;
 }
 #container {
-    display: block;
+    // display: block;
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 @media print, screen and (min-width: 40em) {
@@ -20,24 +23,18 @@ html, body {
   }
 }
 
+#root {
+  height: 100%;
+}
+
 main {
-  min-height : calc(100vh - 146px);
-  // padding-top : 1.5rem;
-  // padding-bottom : 1.5rem;
-  //
-  // @media (min-width : $medium-break-point) {
-  //   padding: 0 0 3rem;
-  // }
+  flex: 1;
   padding : 0;
 }
 
 .bg-black {
   background-color : #333;
 }
-
-// .bg-white {
-//   background-color : #fff
-// }
 
 #demosPage {
   display: flex;

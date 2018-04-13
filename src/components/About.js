@@ -11,6 +11,24 @@ const Details = (props) => {
   }
 }
 
+const InfoPanels = () => {
+  return (
+    <article id="infoPanelWrapper">
+      <section id="centersPanel" className="info-panel">
+        Centers of Excellence
+      </section>
+
+      <section id="peoplePanel" className="info-panel">
+        People
+      </section>
+
+      <section id="experiencePanel" className="info-panel">
+        Relevant Experience
+      </section>
+    </article>
+  )
+}
+
 class About extends React.Component {
   constructor() {
     super();
@@ -29,7 +47,8 @@ class About extends React.Component {
   render() {
     return (
       <main id="aboutPage">
-        <Details clickHandler={this.clickHandler} isCentersSelected={this.state.isCentersSelected} />
+        {/* <Details clickHandler={this.clickHandler} isCentersSelected={this.state.isCentersSelected} /> */}
+        <InfoPanels />
       </main>
     );
   }

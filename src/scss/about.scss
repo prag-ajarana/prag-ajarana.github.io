@@ -2,37 +2,67 @@
   height: 100%;
   padding: 20px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
 
+$panel-icon-width: 80px;
+$panel-background: linear-gradient(335deg, hsl(50, 90%, 50%), hsl(40, 100%, 50%));
+
 .info-panel {
+  background: $panel-background;
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   width: 350px;
   height: 350px;
-  background-color: orange;
   color: #333;
   border-radius: 3px;
   border: 1px solid #ddd;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.08);
   transition: all 0.3s linear;
+  position: relative;
+  margin: 30px 0;
+  color: white;
+
+  p {
+    font-size: 22px;
+    padding: 25px 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+  }
+
+  .panel-icon {
+    width: 80px;
+    height: 80px;
+    background-color: white;
+  }
 }
 
-#centersPanel {
-  background: url('/assets/icons/solid/dot-circle.svg') 50% / 30px no-repeat;
+#centersIcon {
+  -webkit-mask: url('/assets/icons/solid/chart-line.svg') 50% / 80px no-repeat;
 }
 
-#peoplePanel {
-  background: url('/assets/icons/solid/people.svg') 50% / 30px no-repeat;
+#peopleIcon {
+  -webkit-mask: url('/assets/icons/solid/users.svg') 50% / 80px no-repeat;
+}
+
+#demosIcon {
+  -webkit-mask: url('/assets/icons/solid/desktop.svg') 50% / 80px no-repeat;
 }
 
 .info-panel:hover {
-  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.22);
 }
 
-.info-panel:nth-child(2) {
-  margin: 0 20px;
+@media (min-width: 700px) {
+  .info-panel:nth-child(2) {
+    margin: 0 60px;
+  }
 }

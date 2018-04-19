@@ -1,57 +1,56 @@
 import React from 'react';
 import Centers from './Centers.js';
 import People from './People.js';
-
-const Details = (props) => {
-  if (props.isCentersSelected) {
-    return <Centers clickHandler={props.clickHandler} />
-  }
-  else {
-    return <People clickHandler={props.clickHandler} />
-  }
-}
+import { NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import AboutDemos from './AboutDemos.js';
 
 const InfoPanels = () => {
   return (
     <article id="infoPanelWrapper">
-      <section id="centersPanel" className="info-panel">
-        Centers of Excellence
-      </section>
+      <NavLink className="info-panel" exact to="/about/centers">
+          <p>Centers of Excellence</p>
+          <div id="centersIcon" className="panel-icon"></div>
+      </NavLink>
 
-      <section id="peoplePanel" className="info-panel">
-        People
-      </section>
+      <NavLink className="info-panel" exact to="/about/people">
+        <p>People</p>
+        <div id="peopleIcon" className="panel-icon"></div>
+      </NavLink>
 
-      <section id="experiencePanel" className="info-panel">
-        Relevant Experience
-      </section>
+      <NavLink className="info-panel" exact to="/about/demos">
+        <p>Demos</p>
+        <div id="demosIcon" className="panel-icon"></div>
+      </NavLink>
     </article>
   )
 }
 
 class About extends React.Component {
-  constructor() {
-    super();
-
-    this.clickHandler = this.clickHandler.bind(this);
-
-    this.state = {
-      isCentersSelected: true
-    }
-  }
-
-  clickHandler(isCentersSelected) {
-    this.setState( {isCentersSelected} )
-  }
-
   render() {
+    console.log('About', this.props.match);
     return (
+      // ABOUTPAGE DOESNT EXIST
       <main id="aboutPage">
-        {/* <Details clickHandler={this.clickHandler} isCentersSelected={this.state.isCentersSelected} /> */}
-        <InfoPanels />
+        <Router>
+          <div>
+            <InfoPanels />
+            <Route exact path={`${this.props.match.path}/centers`} component={Centers}/>
+            <Route path={`${this.props.match.path}/people`} component={People} />
+            <Route path={`${this.props.match.path}/demos`} component={AboutDemos} />
+          </div>
+        </Router>
       </main>
     );
   }
 }
 
 export default About;
+
+{/* <Router>
+  <div>
+    <Route exact path="/about/centers" component={Centers}/>
+    <Route exact path="/about/people" component={People} />
+    <Route exact path="/about/demos" component={AboutDemos} />
+  </div>
+</Router> */}

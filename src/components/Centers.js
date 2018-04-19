@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class Centers extends React.Component {
   constructor(props) {
@@ -7,13 +7,19 @@ class Centers extends React.Component {
   }
 
   render() {
+    console.log('centers', this.props);
+    console.log('how the fuck did this match')
     return (
-      <div className="grid-container">
+      <div className="grid-container content-container">
         <div className="grid-x align-center-middle">
           <div className="cell medium-10 large-8">
             <ul className="tabs" data-deep-link="true" data-tabs id="example-tabs">
-              <li className="tabs-title tabs-title-active"><Link to={`/about`} onClick={() => this.props.clickHandler(true)}>Centers of Excellence</Link></li>
-              <li className="tabs-title"><Link to={`/about`} onClick={() => this.props.clickHandler(false)}>People</Link></li>
+              <li className="tabs-title tabs-title-active">
+                <NavLink exact to="/about/centers">Centers of Excellence</NavLink>
+              </li>
+              <li className="tabs-title">
+                <NavLink exact to="/about/people">People</NavLink>
+              </li>
             </ul>
             <div className="tabs-content" data-tabs-content="example-tabs">
               <div className="tabs-panel is-active" id="centers">

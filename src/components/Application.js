@@ -8,6 +8,7 @@ import Header from './Header.js';
 import Home from './Home.js';
 import About from './About.js';
 import People from './People.js';
+import AboutDemos from './AboutDemos.js';
 import '../scss/main.scss';
 import { hot } from 'react-hot-loader';
 
@@ -23,8 +24,6 @@ class Application extends React.Component {
           <Header />
 
           <Route exact path="/" component={Home} />
-          <Route exact path="/about/centers" component={Centers}/>
-          <Route exact path="/about/people" component={People} />
           <Route path="/about" component={About} />
           <Route path="/demos" component={Demos} />
 

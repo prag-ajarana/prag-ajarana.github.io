@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-class People extends React.Component {
+class AboutDemos extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -51,4 +51,4 @@ class People extends React.Component {
   }
 }
 
-export default People;
+export default AboutDemos;

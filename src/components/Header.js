@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
 
 const TopLeftBar = () => {
   return (
@@ -20,8 +21,9 @@ const TopRightBar = () => {
     <div className="top-bar-right">
       <ul className="menu align-center">
         <li><NavLink exact to={`/`} activeClassName="selected"><div className="menuLinkItem">Home</div></NavLink></li>
-        <li><NavLink exact to="/about" activeClassName="selected"><div className="menuLinkItem">About</div></NavLink></li>
-        <li><NavLink to={`/demos`} activeClassName="selected"><div className="menuLinkItem">Live Demos</div></NavLink></li>
+        <li><NavLink to="/about" activeClassName="selected"><div className="menuLinkItem">About</div></NavLink></li>
+        <li><NavLink to={`/demos`} activeClassName="selected"><div className="menuLinkItem">Demos</div></NavLink></li>
+        {/* <li><NavLink to={`/demos`} activeClassName="selected"><div className="menuLinkItem">Live Demos</div></NavLink></li> */}
       </ul>
     </div>
   )
@@ -30,7 +32,7 @@ const TopRightBar = () => {
 const Header = () => {
   return (
     <header className="bg-white nav-header">
-      <div className="grid-container top-bar">
+      <div className="grid-container top-bar responsive-padding">
         <TopLeftBar />
         <TopRightBar />
       </div>
@@ -38,4 +40,4 @@ const Header = () => {
   );
 }
 
-export default Header;
+export default hot(module)(Header);

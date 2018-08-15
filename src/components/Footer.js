@@ -10,7 +10,7 @@ class Footer extends React.Component {
     return (
       <footer className="bg-black nav-footer">
         <ul className="menu align-center">
-          <li><a href="http://www.pragmatics.com" target="_blank">Pragmatics Home</a></li>
+          <li><a href="http://www.pragmatics.com" target="_blank">Pragmatics Site</a></li>
         </ul>
       </footer>
     );

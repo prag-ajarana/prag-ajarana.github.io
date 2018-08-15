@@ -16,13 +16,13 @@
     <div class="grid-container top-bar">
       <div class="top-bar-left">
         <ul class="dropdown menu flex-center-small" data-dropdown-menu>
-          <li class="menuitem"><a id="branding" href="https://prag-ajarana.github.io/tsg-site/">Technology Solutions Group</a></li>
+          <li class="menuitem"><a id="branding" href="/">Technology Solutions Group</a></li>
         </ul>
       </div>
 
       <div class="top-bar-right">
         <ul class="menu align-center">
-          <li><a href="https://prag-ajarana.github.io/tsg-site/">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a class="selected" href="demos.html">Demos</a></li>
         </ul>
@@ -33,28 +33,22 @@
   <main id="demosPage">
 
     <div class="grid-container">
-      <div class="grid-y">
-        <h1>MDA</h1>
-        <div class="cell small-12 medium-8">
+      <div class="grid-x align-center">
+        <div id="demoRoot" class="cell small-12 medium-8">
           <article>
             <section>
-              <h3>The Challenge</h3>
-              <p>The National Maritime Intelligence-Integration Office (NMIO) in coordination with the Department of Homeland Security (DHS) Science &amp; Technology Directorate (S&amp;T), and the U.S. Coast Guard needed a way to automate and fuse complex and disparate real-time data sources to determine ship risk for their maritime safety mission.</p>
-            </section>
-            <section>
-              <h3>The Solution</h3>
-              <p>We used our open architecture design and machine learning to determine individual ship risk through the fusion of real-time terrestrial AIS data and real-time data from the National Oceanic and Atmospheric Administration’s (NOAA) National Data Buoy Center (NDBC).</p>
-            </section>
-            <section>
-              <h3>The Result</h3>
-              <p>Our solution automated and fused real-time risk analytics for over 25,000 ships and over 1,300 buoys world-wide</p>
-              <section style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                <a href="#">
-                  <img src="assets/screenshots/mda/combo.png">
-                </a>
-                <a id="demo-button" href="#">View MDA Demo</a>
-              </section>
-            </section>
+              <h3>Sign in</h3>
+	      <form id='loginForm'>
+		<input id='username' type='text' required autocomplete='off'>
+		<label>Username</label>
+		<input id='password' type='password' required autocomplete='off'>
+		<label>Password</label>
+
+		<div class="formContainer">
+		<button id='submitButton' type='button'>Next</button>
+		</div>
+	      </form>
+	    </section>
           </article>
         </div>
       </div>
@@ -66,6 +60,94 @@
       <li><a href="http://www.pragmatics.com" target="_blank">Pragmatics Home</a></li>
     </ul>
   </footer>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const submitButton = document.getElementById('submitButton');
+    const demoRoot = document.getElementById('demoRoot');   
+
+    function clickHandler(e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      const credentials = {
+		username,
+		password
+      };
+
+      const blob = new Blob([JSON.stringify(credentials, null, 2)], {type : 'application/json'});
+
+  fetch('https://halo.pragmatics.com:8080/authenticate', {
+	  	method : 'POST',
+	  	//body : params
+      body : blob
+  })
+  .then(res => {
+			console.log('This is the initial resposne: ');
+			console.log(res);
+      return res.text();
+	})
+  .then(json => {
+      console.log('This is the json: ');
+			console.log(json);
+			if (json) {
+				return JSON.parse(json);
+			}
+	})
+	.catch(err => {
+		console.log('This is the error: ' + err);
+	})
+  .then(data => {
+		console.log('This is the data being sent down: ');
+		console.log(data);
+		if (data) {
+			const token = data.token;
+			const permissions = JSON.stringify(data.permissions);
+
+			localStorage.setItem('token', token);
+			getProtectedResource(token);
+		}
+	        else {
+		  localStorage.removeItem('token');
+		}
+	})
+	.catch(err => {
+		console.log('This is the error: ' + err);
+	})
+     .then(() => {
+		
+	});
+    }
+
+    function getProtectedResource(token) {
+	const url = 'https://halo.pragmatics.com:80/protectedResource';
+
+	fetch(url, {
+		headers : {
+			'token' : token
+		}
+	})
+	.then(res => {
+		return res.text();
+	})
+	.catch(err => {
+		//window.location.href = 'http://localhost:8080'
+		demoRoot.innerHTML = 'nope';
+	})
+	.then(res => {
+		console.log('Here is the parsed response: ');
+		console.log(res);
+		demoRoot.innerHTML = res;
+	})
+	.catch(err => {
+	  console.log('Caught!');
+	})
+    }
+
+    submitButton.addEventListener('click', clickHandler);
+  </script>
 
   <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"

@@ -452,30 +452,6 @@ $left : 50% - $width/2;
   flex: 1;
 }
 
-#branding {
-  font-weight : bold;
-  font-size : 16px;
-  letter-spacing : 1px;
-  padding : 24px 1rem 0;
-  position : relative;
-  z-index : 99;
-  color: white;
-
-  @media (min-width : $medium-break-point) {
-    padding : 16px 2rem;
-  }
-}
-
-.flex-center-small {
-  align-items : center;
-  justify-content : center;
-
-  @media (min-width : $medium-break-point) {
-    align-items : center;
-    justify-content : flex-start;
-  }
-}
-
 #demoRoot {
   max-width: 550px;
 
